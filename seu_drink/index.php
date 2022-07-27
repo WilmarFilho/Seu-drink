@@ -1,5 +1,10 @@
-<?php 
+ <?php 
 	require "controler.php";
+
+	
+
+
+
 ?>
 
 
@@ -8,7 +13,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-		<title>Home</title>
+		<title>Encontre seu drink !</title>
+		<link rel="icon" href="imagens/favicon1.png">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> <!-- Bootstrap4 -->
 		<link rel="stylesheet" type="text/css" href="estilo/estilo.css">
 		<script src="https://kit.fontawesome.com/9d7842dfbe.js" crossorigin="anonymous"></script> <!-- Icones -->
@@ -22,8 +28,21 @@
 			    	placeholder: "Selecione oque voce tem!",
     				allowClear: true
 			    });
+
+			    
+			    if($(location).attr('href') == 'http://localhost/seudrink/seu_drink/index.php?busca=sim') {
+			   
+				    $('html, body').animate({
+				    	scrollTop: 900
+				    }, 600);
+
+				}
+
+
+
 			});
 
+			
 		</script>
 		
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -37,7 +56,7 @@
 
 	
 	
-	<body >
+	<body>
 
 		<main class="container-fluid">
 
@@ -156,7 +175,7 @@
 
 								</div>
 
-								<button type="submit" class="btn btn-outline-warning mt-5">Procurar</button>
+								<button type="submit"  class="btn btn-outline-warning mt-5">Procurar</button>
 								
 							</form>
 						</div>
@@ -170,6 +189,142 @@
 
 			</section>
 
+			<?php if(isset($drinks) and !empty($drinks)) { ?>
+
+				<section id="conteudo_drinks" class="row my-5 py-5 justify-content-around">
+					
+					<?php foreach ($drinks as $indice => $drink) { ?>
+						
+						<?php 
+
+							$preparo = explode('*', $drink->preparo) ;
+							
+							$preparo[1] =  isset($preparo[1]) ? $preparo[1] : '' ;
+							$preparo[2] =  isset($preparo[2]) ? $preparo[2] : '' ;
+							$preparo[3] =  isset($preparo[3]) ? $preparo[3] : '' ;
+							$preparo[4] =  isset($preparo[4]) ? $preparo[4] : '' ;
+							$preparo[5] =  isset($preparo[5]) ? $preparo[5] : '' ;
+							$preparo[6] =  isset($preparo[6]) ? $preparo[6] : '' ;
+							
+						?>
+
+						<div class="card col-md-5 col-10 card-custom mt-4">
+							
+								
+								
+								<img src="<?=$drink->img?>" class="img-fluid card-img-top">
+								
+
+							
+
+							<div class="card-body">
+								<h2 class="text-capitalize text-center card-title"><?=$drink->nome?></h2>
+
+								<div class="card-text row justify-content-center">
+
+									<div class="col-md-6 mt-3">
+										<h3 class="text-center text-uppercase">Ingredientes:</h3>
+
+										<ul class="list-group text-capitalize">
+
+											<?php if($drink->bebida !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->bebida?></li>
+											<?php } ?>
+
+											<?php if($drink->bebida_adicional !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->bebida_adicional?></li>
+											<?php } ?>
+
+											<?php if($drink->suco_fruta !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->suco_fruta?></li>
+											<?php } ?>
+
+											<?php if($drink->suco_fruta_adicional !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->suco_fruta_adicional?></li>
+											<?php } ?>
+
+											<?php if($drink->ingrediente !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->ingrediente?></li>
+											<?php } ?>
+
+											<?php if($drink->ingrediente_adicional_1 !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->ingrediente_adicional_1?></li>
+											<?php } ?>
+
+											<?php if($drink->ingrediente_adicional_2 !== 'ND') { ?>
+												<li class="list-group-item"><?=$drink->ingrediente_adicional_2?></li>
+											<?php } ?>
+
+										</ul>
+									</div>
+
+									<div class="col-md-6 mt-3">
+
+										<h3 class="text-center text-uppercase">Como fazer:</h3>
+										<ol class="list-group text-capitalize">
+
+											<?php if($preparo[0] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[0]?></li>
+											<?php } ?>
+											
+											<?php if($preparo[1] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[1]?></li>
+											<?php } ?>
+
+
+											<?php if($preparo[2] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[2]?></li>
+											<?php } ?>
+
+											<?php if($preparo[3] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[3]?></li>
+											<?php } ?>
+
+											<?php if($preparo[4] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[4]?></li>
+											<?php } ?>
+
+											<?php if($preparo[5] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[5]?></li>
+											<?php } ?>
+
+											<?php if($preparo[6] !== '') { ?>
+												<li class="list-group-item"><?=$preparo[6]?></li>
+											<?php } ?>
+
+										</ol>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					<?php } ?>
+
+
+				</section>
+
+				
+
+			<?php  } ?>
+
+			<?php if(isset($drinks) and empty($drinks)) { ?>
+
+				<section id="conteudo" class="row my-5 py-5">
+
+					<h1>Sem drink</h1>
+					<button class="btn btn-outline-warning" onclick="window.location.href='index.php'">Procurar de novo</button>
+
+				</section>
+
+
+
+
+
+			<?php  } ?>
+
 			
 			<section id="conteudo" class="row my-5  py-5">
 				
@@ -179,7 +334,7 @@
 						<h2 class="texto">Nossas sugestões</h2>
 					</div>
 
-					<div class="col-8 mx-auto mt-4" >
+					<div class="col-md-8 col-12 mx-auto mt-4" >
 
 						<div id="carousel" class="carousel slide " data-ride="carousel">
 							
@@ -187,25 +342,47 @@
 								
 								<div class="carousel-item active">
 									<div class="row">
-										<div class="col-4">
+										<div class="col-4" style="padding: 0px">
 											
-											<img src="imagens/lagoaazul.jpg" class="img-drink" height="400">
+											<img src="imagens/drinks/pinacolada.png" class="img-drink" height="400" width="100%">
 										</div>
-										<div class="col-4">
-											<img src="imagens/lagoaazul.jpg" height="400" >
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/caipirinhadelimao.jpg" height="400" width="100%" >
 										</div>
-										<div class="col-4">
-											<img src="imagens/lagoaazul.jpg" height="400" >
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/margarida.jpg" height="400" width="100%">
 										</div>
 									</div>
 								</div>
 
 								<div class="carousel-item">
-									<img src="imagens/lagoaazul.jpg" width="100%" height="400">
+									<div class="row">
+										<div class="col-4" style="padding: 0px">
+											
+											<img src="imagens/drinks/pinacolada.png" class="img-drink" height="400" width="100%">
+										</div>
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/caipirinhadelimao.jpg" height="400" width="100%" >
+										</div>
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/margarida.jpg" height="400" width="100%">
+										</div>
+									</div>
 								</div>
 
 								<div class="carousel-item">
-									<img src="imagens/lagoaazul.jpg" width="100%" height="400">
+									<div class="row">
+										<div class="col-4" style="padding: 0px">
+											
+											<img src="imagens/drinks/pinacolada.png" class="img-drink" height="400" width="100%">
+										</div>
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/caipirinhadelimao.jpg" height="400" width="100%" >
+										</div>
+										<div class="col-4" style="padding: 0px">
+											<img src="imagens/drinks/margarida.jpg" height="400" width="100%">
+										</div>
+									</div>
 								</div>
 
 							</div>
@@ -231,7 +408,8 @@
 			<footer id="rodape">
 				<article class="row">
 					<div class="col-6 text-center">
-						<p>dadsada</p>			
+						<h2>Parceiros</h2>
+						<img src="imagens/parceiro.png" class="img-fluid">			
 					</div>
 					<div class="col-6 text-center">
 						<img src="imagens/logo.png" class="img-fluid ">

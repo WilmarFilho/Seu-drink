@@ -3,6 +3,11 @@ body {
 	
 }
 
+@font-face {
+	font-family: 'dream';
+	src: url('dream.woff');
+}
+
 
 
 
@@ -38,13 +43,52 @@ body {
 	animation-fill-mode: both;
 }
 
-#conteudo {
+#conteudo, #conteudo_drinks {
 	border: 6px double #DF7401;
 	border-left: none;
 	border-right: none;
 	box-shadow: 0 0 1em #DF7401;
 	
 
+}
+
+.card-custom {
+	border-radius: 15px;
+	border: 3px double darkred;
+	box-shadow: 0 0 1em darkred;
+}
+
+.card {
+	padding: 0 !important;
+}
+
+.card-img-top {
+	border-radius: 10px;
+}
+
+#conteudo_drinks h2 {
+	font-family: dream;
+	color: #DF7401;
+	font-size: 3.5em;
+	font-weight: bolder;
+}
+
+footer h2 {
+	font-family: dream;
+	color: #DF7401;
+	font-size: 3.5em;
+	font-weight: bolder;
+}
+
+#conteudo_drinks h3 {
+	font-family: Helvetica sans-serif;
+	color: darkred;
+	text-shadow: 0 0 1em #DF7401;
+	font-size: 2em;
+}
+
+#conteudo_drinks li {
+	font-size: 1.2em;
 }
 
 .img {

@@ -23,12 +23,15 @@
 			$drink->__set('ingrediente_adicional_2', $_POST['ingrediente_adicional_2']);
 
 			$bd = new Bd($conexao, $drink);
-			echo '<pre>';
-			print_r($bd->procuraDrink());
-			echo '</pre>';
+			
+
+			$drinks =  $bd->procuraDrink();
+			
 
 
 		}
+
+		
 
 	}
 
