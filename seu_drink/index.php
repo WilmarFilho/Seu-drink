@@ -33,7 +33,7 @@
 			    if($(location).attr('href') == 'http://localhost/seudrink/seu_drink/index.php?busca=sim') {
 			   
 				    $('html, body').animate({
-				    	scrollTop: 900
+				    	scrollTop: 800
 				    }, 600);
 
 				}
@@ -62,7 +62,7 @@
 
 			<header class="">
 				
-				<div class="navegacao row">
+				<div class="navegacao row fixed-top">
 					
 					<div class="mx-auto col-md-6 col-9 d-flex justify-content-center">
 						<a href="index.php"><img src="imagens/logo.png"  class="img-fluid "></a>
@@ -72,7 +72,7 @@
 
 			</header>
 
-			<section id="conteudo" class=" row	 mt-5 py-5 ">
+			<section id="conteudo" class=" topo row	 py-5 " style="margin-top: 200px">
 
 				
 				
@@ -82,7 +82,7 @@
 							<h3>Oque você tem ?</h3>
 						</div>
 						
-						<div class="col-10 mx-auto">
+						<div class="col-10 mx-auto form">
 							<form method="POST" action="index.php?busca=sim">
 
 								<div class="form-row">
@@ -182,7 +182,7 @@
 					</div>
 
 					<div class="col-md-6 col-12 animacao">
-						<img src="imagens/d3.jpg" class="img-fluid img">
+						<img src="imagens/d5.jpg" class="img-fluid img">
 					</div>
 
 				
@@ -192,6 +192,8 @@
 			<?php if(isset($drinks) and !empty($drinks)) { ?>
 
 				<section id="conteudo_drinks" class="row my-5 py-5 justify-content-around">
+
+					<h2 class="titulo_conteudo col-12 text-center mb-5">Drinks que você pode fazer !</h2>
 					
 					<?php foreach ($drinks as $indice => $drink) { ?>
 						
@@ -223,7 +225,7 @@
 								<div class="card-text row justify-content-center">
 
 									<div class="col-md-6 mt-3">
-										<h3 class="text-center text-uppercase">Ingredientes:</h3>
+										<h3 class="text-center ">Ingredientes:</h3>
 
 										<ul class="list-group text-capitalize">
 
@@ -260,7 +262,7 @@
 
 									<div class="col-md-6 mt-3">
 
-										<h3 class="text-center text-uppercase">Como fazer:</h3>
+										<h3 class="text-center ">Como fazer:</h3>
 										<ol class="list-group text-capitalize">
 
 											<?php if($preparo[0] !== '') { ?>
@@ -306,8 +308,6 @@
 
 				</section>
 
-				
-
 			<?php  } ?>
 
 			<?php if(isset($drinks) and empty($drinks)) { ?>
@@ -319,14 +319,10 @@
 
 				</section>
 
-
-
-
-
 			<?php  } ?>
 
 			
-			<section id="conteudo" class="row my-5  py-5">
+			<section id="conteudo" class="sugestao row mt-5 mb-5  py-5">
 				
 				
 					
@@ -334,7 +330,7 @@
 						<h2 class="texto">Nossas sugestões</h2>
 					</div>
 
-					<div class="col-md-8 col-12 mx-auto mt-4" >
+					<div class="col-md-10 col-12 mx-auto mt-4" >
 
 						<div id="carousel" class="carousel slide " data-ride="carousel">
 							
@@ -359,31 +355,18 @@
 									<div class="row">
 										<div class="col-4" style="padding: 0px">
 											
-											<img src="imagens/drinks/pinacolada.png" class="img-drink" height="400" width="100%">
+											<img src="imagens/drinks/sangria.jpg" class="img-drink" height="400" width="100%">
 										</div>
 										<div class="col-4" style="padding: 0px">
-											<img src="imagens/drinks/caipirinhadelimao.jpg" height="400" width="100%" >
+											<img src="imagens/drinks/gintonica.jpg" height="400" width="100%" >
 										</div>
 										<div class="col-4" style="padding: 0px">
-											<img src="imagens/drinks/margarida.jpg" height="400" width="100%">
+											<img src="imagens/drinks/caipirinhademorango.jpg" height="400" width="100%">
 										</div>
 									</div>
 								</div>
 
-								<div class="carousel-item">
-									<div class="row">
-										<div class="col-4" style="padding: 0px">
-											
-											<img src="imagens/drinks/pinacolada.png" class="img-drink" height="400" width="100%">
-										</div>
-										<div class="col-4" style="padding: 0px">
-											<img src="imagens/drinks/caipirinhadelimao.jpg" height="400" width="100%" >
-										</div>
-										<div class="col-4" style="padding: 0px">
-											<img src="imagens/drinks/margarida.jpg" height="400" width="100%">
-										</div>
-									</div>
-								</div>
+								
 
 							</div>
 
@@ -405,15 +388,26 @@
 
 			</section>
 
-			<footer id="rodape">
-				<article class="row">
-					<div class="col-6 text-center">
-						<h2>Parceiros</h2>
-						<img src="imagens/parceiro.png" class="img-fluid">			
+			<footer id="rodape" class="row">
+				<article class="col-12 row align-items-center justify-content-center">
+					<div class="col-4 text-center">
+						<h2>Sobre:</h2>
+						<p>Web service criado e desenvolvido de forma autonoma</p>		
 					</div>
-					<div class="col-6 text-center">
-						<img src="imagens/logo.png" class="img-fluid ">
-					</div>				
+					<div class="col-4 text-center">
+						<h2>Navegação:</h2>
+						<ul class="nav justify-content-center">
+							<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+							<li class="nav-item"><a class="nav-link">teste</a></li>
+							<li class="nav-item"><a class="nav-link">teste</a></li>
+						</ul>
+					</div>	
+					<div class="col-md-4 col-12 text-center">
+						<h2>Parceiros</h2>
+						<ul class="nav justify-content-center">
+							<li class="nav-item"><a class="nav-link" href="https:/www.produtosdotiao.com"><img src="imagens/parceiro.png" width="300"></li></a>
+						</ul>
+					</div>			
 				</article>
 			</footer>
 
