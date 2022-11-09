@@ -1,2 +1,2 @@
 # Seu-drink
-Projeto Pessoal de um web service (continuado em Seu-drink-com-Laravel)
+Interrompido por motivo de migração pra codigo com Laravel, projeto finalizado em repositório "Seu-Drink-com-Laravel" !
